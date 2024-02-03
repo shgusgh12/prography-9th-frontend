@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Prography 9th
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 로컬 실행
 
-## Available Scripts
+```
+npm install
+npm start
+```
 
-In the project directory, you can run:
+## 개발 언어
 
-### `npm start`
+- Javascript, React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 구현 기능
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. 카테고리
+   - 여러개의 카테고리 선택 가능하다.
+   - 카테고리를 두번 누를시 선택해제 된다.
+   - 선택한 카테고리가 없을시 이미지가 보이지 않는다.
+   - 선택한 카테고리의 음식 정보 개수를 보여준다.
+2. 음식 정보
+   - 카테고리 선택시 관련 음식 이미지 및 정보를 보여준다.
+   - 20개씩 음식 정보를 확인할 수 있고, 스크롤시 추가로 보여준다.
+3. 필터링
+   - 최신 등록순, 알파벳 오름차순, 내림차순 선택시 음식 정보를 정렬한다.
+   - 사용자가 선택하여 2개씩 혹은 4개씩 음식 정보를 보여준다.
+4. 사용자 지정 레이아웃
+   - 모바일 화면에서는 필터가 사라지며 1개씩 음식 정보를 보여준다.
+5. 쿼리스트링
+   - 사용자가 선택한 카테고리와 정렬 기준을 쿼리스트링으로 보여준다.
