@@ -16,10 +16,16 @@ function App() {
   const [numOfSelectedMeals, setNumOfSelectedMeals] = useState(0);
   const [currNumOfSelectedMeals, setCurrNumOfSelectedMeals] = useState(0);
   const [mealsData, setMealsData] = useState([]);
+
+  const [sortOption, setSortOption] = useState(3);
+  const [imgOption, setImgOption] = useState(1);
+
   const updateQueryString = (update) => {
+    const isEmpty = Object.values(update).every((value) => !value);
+
     navigate({
       pathname: location.pathname,
-      search: queryString.stringify(update),
+      search: isEmpty ? '' : queryString.stringify(update),
     });
   };
 
@@ -38,6 +44,15 @@ function App() {
     updateQueryString(updatedQuery);
   };
 
+  const handleSortChange = (selectedOption) => {
+    console.log(`Selected: ${selectedOption.value}`);
+    setSortOption(selectedOption.value);
+  };
+
+  const handleImgChange = (selectedOption) => {
+    console.log(`Selected: ${selectedOption.value}`);
+    setImgOption(selectedOption.value);
+  };
   useEffect(() => {
     async function getCategoryName() {
       try {
@@ -77,7 +92,7 @@ function App() {
           );
           setNumOfSelectedMeals(mealArray.length);
 
-          console.log(mealArray, numOfSelectedMeals);
+          console.log(mealArray[0].idMeal, typeof mealArray[1].idMeal);
         } catch (e) {
           console.log(e);
         }
@@ -89,6 +104,31 @@ function App() {
       setCurrNumOfSelectedMeals(0);
     }
   }, [selectedCategoryName]);
+
+  useEffect(() => {
+    let filterValue;
+    switch (sortOption) {
+      case 0:
+        filterValue = 'new';
+        break;
+      case 1:
+        filterValue = 'asc';
+        break;
+      case 2:
+        filterValue = 'desc';
+        break;
+      case 3:
+        filterValue = '';
+        break;
+    }
+
+    const updatedQuery = {
+      ...currentQuery,
+      filter: filterValue,
+    };
+
+    updateQueryString(updatedQuery);
+  }, [sortOption]);
 
   return (
     <div className={styles.wrapper}>
@@ -107,10 +147,16 @@ function App() {
           <Filter
             numOfSelectedMeals={numOfSelectedMeals}
             currNumOfSelectedMeals={currNumOfSelectedMeals}
+            handleImgChange={handleImgChange}
+            handleSortChange={handleSortChange}
           ></Filter>
         </div>
         <div className={styles.contents_section}>
-          <Contents mealsData={mealsData}></Contents>
+          <Contents
+            mealsData={mealsData}
+            sortOption={sortOption}
+            imgOption={imgOption}
+          ></Contents>
         </div>
       </main>
     </div>
