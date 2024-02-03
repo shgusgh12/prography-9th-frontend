@@ -1,6 +1,15 @@
 import styles from './Contents.module.scss';
-
-export const Contents = ({ mealsData, sortOption, imgOption }) => {
+import { useRef, useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+export const Contents = ({
+  mealsData,
+  sortOption,
+  imgOption,
+  currNumOfSelectedMeals,
+  loadMore,
+  hasMore,
+}) => {
   const sortByRecent = (array) => {
     array.sort((a, b) => parseInt(b.idMeal, 10) - parseInt(a.idMeal, 10));
   };
@@ -23,21 +32,31 @@ export const Contents = ({ mealsData, sortOption, imgOption }) => {
   } else if (sortOption === 2) {
     dsc(mealsData);
   }
+  console.log(currNumOfSelectedMeals);
 
   return (
-    <div
-      className={`${styles.contents_container} ${
-        imgOption === 0 ? styles.two : ''
-      }`}
+    <InfiniteScroll
+      dataLength={currNumOfSelectedMeals}
+      next={loadMore}
+      hasMore={hasMore}
     >
-      {mealsData.map((item, index) => {
-        return (
-          <div className={styles.card}>
-            <img src={item.strMealThumb}></img>
-            <p>{item.strMeal}</p>
-          </div>
-        );
-      })}
-    </div>
+      <div
+        className={`${styles.contents_container} ${
+          imgOption === 0 ? styles.two : ''
+        }`}
+      >
+        {mealsData.slice(0, currNumOfSelectedMeals).map((item, index) => {
+          return (
+            <div className={styles.card}>
+              <LazyLoadImage
+                src={item.strMealThumb}
+                alt={item.strMeal}
+              ></LazyLoadImage>
+              <p>{item.strMeal}</p>
+            </div>
+          );
+        })}
+      </div>
+    </InfiniteScroll>
   );
 };

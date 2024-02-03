@@ -19,7 +19,7 @@ function App() {
 
   const [sortOption, setSortOption] = useState(3);
   const [imgOption, setImgOption] = useState(1);
-
+  const [hasMore, setHasMore] = useState(true);
   const updateQueryString = (update) => {
     const isEmpty = Object.values(update).every((value) => !value);
 
@@ -53,6 +53,7 @@ function App() {
     console.log(`Selected: ${selectedOption.value}`);
     setImgOption(selectedOption.value);
   };
+
   useEffect(() => {
     async function getCategoryName() {
       try {
@@ -130,6 +131,20 @@ function App() {
     updateQueryString(updatedQuery);
   }, [sortOption]);
 
+  const loadMore = () => {
+    if (currNumOfSelectedMeals >= mealsData.length) {
+      setHasMore(false);
+      return;
+    }
+
+    setTimeout(() => {
+      setCurrNumOfSelectedMeals((prevNum) => prevNum + 20);
+    }, 1500);
+  };
+
+  useEffect(() => {
+    setHasMore(true);
+  }, [mealsData]);
   return (
     <div className={styles.wrapper}>
       <header>
@@ -153,9 +168,12 @@ function App() {
         </div>
         <div className={styles.contents_section}>
           <Contents
+            currNumOfSelectedMeals={currNumOfSelectedMeals}
             mealsData={mealsData}
             sortOption={sortOption}
             imgOption={imgOption}
+            loadMore={loadMore}
+            hasMore={hasMore}
           ></Contents>
         </div>
       </main>
