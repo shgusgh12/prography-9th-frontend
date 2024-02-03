@@ -53,6 +53,16 @@ function App() {
     console.log(`Selected: ${selectedOption.value}`);
     setImgOption(selectedOption.value);
   };
+  const loadMore = () => {
+    if (currNumOfSelectedMeals >= mealsData.length) {
+      setHasMore(false);
+      return;
+    }
+
+    setTimeout(() => {
+      setCurrNumOfSelectedMeals((prevNum) => prevNum + 20);
+    }, 1500);
+  };
 
   useEffect(() => {
     async function getCategoryName() {
@@ -130,17 +140,6 @@ function App() {
 
     updateQueryString(updatedQuery);
   }, [sortOption]);
-
-  const loadMore = () => {
-    if (currNumOfSelectedMeals >= mealsData.length) {
-      setHasMore(false);
-      return;
-    }
-
-    setTimeout(() => {
-      setCurrNumOfSelectedMeals((prevNum) => prevNum + 20);
-    }, 1500);
-  };
 
   useEffect(() => {
     setHasMore(true);

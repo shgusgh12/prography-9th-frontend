@@ -1,5 +1,4 @@
 import styles from './Contents.module.scss';
-import { useRef, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 export const Contents = ({
@@ -32,7 +31,6 @@ export const Contents = ({
   } else if (sortOption === 2) {
     dsc(mealsData);
   }
-  console.log(currNumOfSelectedMeals);
 
   return (
     <InfiniteScroll
