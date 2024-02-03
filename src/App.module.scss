@@ -35,22 +35,22 @@ a {
 }
 
 .category_section{
-
     max-width: 1400px;
-    min-width: 1000px;
-    //width: min(90%, 1400px);
     margin-top: 60px;
     
 }
 
 .filter_section{
     min-width: 1200px;
-    //width: min(90%, 1400px);
-   
 }
 
 .contents_section{
     min-width: 1200px;
-    //width: min(90%, 1400px);
-    
+    max-width: 1400px;
 }
+
+@media (max-width: 768px) {
+    .category_section {
+      width: 100%;
+    }
+  }

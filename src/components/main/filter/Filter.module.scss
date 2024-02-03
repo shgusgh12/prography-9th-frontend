@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.filter_container p{
+    font-size: 18px;
+}
+
 .select_container{
     display: flex;
     gap: 10px;
@@ -13,3 +17,9 @@
 .select{
     width: 200px;
 }
+
+@media (max-width: 768px) {
+    .select_container {
+      display: none;
+    }
+  }
