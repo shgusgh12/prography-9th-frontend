@@ -1,0 +1,24 @@
+import Select from 'react-select';
+import styles from './Filter.module.scss';
+import { ImgFilter, SortFilter } from '../../../constants/Constants';
+
+export const Filter = () => {
+  return (
+    <div className={styles.filter_container}>
+      <p>0/0개 조회</p>
+
+      <div className={styles.select_container}>
+        <Select
+          className={styles.select}
+          options={SortFilter}
+          placeholder='정렬 방법을 선택하세요'
+        ></Select>
+        <Select
+          className={styles.select}
+          options={ImgFilter}
+          placeholder='이미지 개수를 선택하세요'
+        ></Select>
+      </div>
+    </div>
+  );
+};
