@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     gap: 10px;
-
+    flex-wrap: wrap;
 }
 
 .category_button{
@@ -16,7 +16,7 @@
     
 }
 
-.category_button:focus{
+.isSelected{
     background-color: #ff7f7f;
     color: white;
     border: 1px solid #ff7f7f;
