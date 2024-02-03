@@ -2,10 +2,12 @@ import Select from 'react-select';
 import styles from './Filter.module.scss';
 import { ImgFilter, SortFilter } from '../../../constants/Constants';
 
-export const Filter = () => {
+export const Filter = ({ numOfSelectedMeals, currNumOfSelectedMeals }) => {
   return (
     <div className={styles.filter_container}>
-      <p>0/0개 조회</p>
+      <p>
+        {currNumOfSelectedMeals}/{numOfSelectedMeals}개 조회
+      </p>
 
       <div className={styles.select_container}>
         <Select

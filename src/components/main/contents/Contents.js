@@ -1,24 +1,13 @@
 import styles from './Contents.module.scss';
 
-export const Contents = () => {
-  let arr = [
-    'item1',
-    'item2',
-    'item3',
-    'item4',
-    'item4',
-    'item4',
-    'item4',
-    'item4',
-    'item4',
-  ];
+export const Contents = ({ mealsData }) => {
   return (
     <div className={styles.contents_container}>
-      {arr.map((item, index) => {
+      {mealsData.map((item, index) => {
         return (
           <div className={styles.card}>
-            <img></img>
-            <p>{item}</p>
+            <img src={item.strMealThumb}></img>
+            <p>{item.strMeal}</p>
           </div>
         );
       })}
